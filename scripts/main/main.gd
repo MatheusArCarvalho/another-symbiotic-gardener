@@ -20,7 +20,7 @@ func _ready() -> void:
 	_preload_plant_scenes()
 
 func _preload_plant_scenes() -> void:
-	var plant_types = ["aqua_root", "terra_root", "aero_root"]
+	var plant_types = ["aqua_pod", "sun_petal"]
 	for plant_type in plant_types:
 		var scene_path = "res://scenes/plants/%s.tscn" % plant_type
 		var scene = load(scene_path)

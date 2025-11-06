@@ -1,18 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://huo3gh6bvy2l"]
+[gd_scene load_steps=4 format=3 uid="uid://huo3gh6bvy2l"]
 
 [ext_resource type="Script" uid="uid://b8mie81wgjikd" path="res://scripts/main/main.gd" id="1_hyk8p"]
+[ext_resource type="PackedScene" uid="uid://bqjr62grxrr53" path="res://scenes/grid/grid.tscn" id="2_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://d1t73t464sqhs" path="res://scenes/ui/ui.tscn" id="3_l3cfh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hyk8p")
 
-[node name="Grid" type="Node" parent="."]
+[node name="Grid" parent="." instance=ExtResource("2_k2fmo")]
+position = Vector2(124, 75)
+grid_width = 4
+grid_height = 4
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="UI" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UI" parent="." instance=ExtResource("3_l3cfh")]

@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cif130y76a5av"]
+
+[ext_resource type="FontFile" uid="uid://cwobgc484j5en" path="res://assets/font/Rockboxcond12.ttf" id="1_ols5k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ols5k"]
+bg_color = Color(0.19793722, 0.19793725, 0.19793713, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[resource]
+default_font = ExtResource("1_ols5k")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ols5k")

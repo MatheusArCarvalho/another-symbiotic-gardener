@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dg831uajyo58a"]
 
-[ext_resource type="PackedScene" uid="uid://rhgsqkwjyey8" path="res://scenes/plant/plant.tscn" id="1_d55mg"]
+[ext_resource type="PackedScene" uid="uid://rhgsqkwjyey8" path="res://scenes/plants/plant.tscn" id="1_d55mg"]
 [ext_resource type="Texture2D" uid="uid://bhdom5j7eja8m" path="res://assets/plants/1 Icons/Icon34_24.png" id="2_v5yp3"]
 
 [node name="AquaPod" instance=ExtResource("1_d55mg")]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc37fmbtjd0nr"]
+
+[ext_resource type="Script" uid="uid://dltnj4ff6d2eu" path="res://scenes/ui/plant_button.gd" id="1_htqxv"]
+[ext_resource type="Theme" uid="uid://cif130y76a5av" path="res://resources/main_theme.tres" id="1_qbkcy"]
+
+[node name="PlantButton" type="Button"]
+custom_minimum_size = Vector2(32, 32)
+theme = ExtResource("1_qbkcy")
+theme_override_constants/outline_size = 8
+text = "Aqua"
+script = ExtResource("1_htqxv")
