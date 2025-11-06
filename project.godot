@@ -17,3 +17,16 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://scenes/autoloads/game_manager.tscn"
+
+[display]
+
+window/size/viewport_width=426
+window/size/viewport_height=240
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
