@@ -1,0 +1,85 @@
+# Another Symbiotic Gardener — Documentation
+
+## Project Overview
+Another Symbiotic Gardener is a puzzle/strategy game about building and maintaining a small garden ecosystem. Players plant different species that provide and consume environmental resources (water, shade, nutrients, etc.). Correct placements and combinations create beneficial symbiosis and allow the garden to thrive.
+
+This repo contains the Godot project implementing the core mechanics: tile-based placement, plant interactions, and a simple win condition where all planted organisms are thriving.
+
+## Quick Play Loop
+1. Select a plant type from the UI.
+2. Click a tile on the grid to plant (if the tile is empty).
+3. The game registers the plant logically, places it visually, then runs a "Resolve" step where each plant checks its neighbors and updates its thriving state.
+4. If all plants are thriving, the game emits a win event and displays the Win Screen.
+
+## Game Mechanics (Detailed)
+- Plant Management
+    - Each plant has properties: name, resources it provides, and resources it needs.
+    - A plant's thriving state depends on whether its needs are met by neighboring plants.
+
+- Symbiotic Relationships
+    - Neighboring plants may provide resources that satisfy a plant's needs (8-way neighbor checks).
+    - Placement order does not affect final Resolve results because updates are applied in a two-pass approach: gather neighbors first, then update all plants.
+
+- Resources
+    - Example resources used by plants include: "water", "shade", "nutrients", "sunlight".
+
+## Controls
+- Mouse
+    - Left click: Select UI buttons / place a plant on a tile.
+    - Hover: UI may show tooltips for plant buttons.
+
+## Scene & Code Layout (important files)
+- Scenes
+    - `scenes/grid/grid.tscn` — Root grid scene that contains Tile instances.
+    - `scenes/grid/tile.tscn` — Single tile scene (Area2D) with collision for input.
+    - `scenes/plants/*.tscn` — Plant scenes (one per plant type), each using `scripts/plant/plant.gd` as base.
+    - `scenes/main/main.tscn` — Main scene wiring together UI, Grid and autoloaded GameManager.
+
+- Scripts
+    - `scripts/autoloads/game_manager.gd` — Core logic: logical grid, register plants, neighbor queries, Resolve and win checks. (Autoloaded as GameManager.)
+    - `scripts/grid/tiles/tile.gd` — Tile logic: stores `grid_coords`, emits `tile_clicked` on input.
+    - `scenes/grid/grid.gd` — (scene script) Generates grid of tiles, connects signals, and provides `add_plant_to_tile()`.
+    - `scripts/plant/plant.gd` — Plant base class: exported properties (`provides`, `needs`), `update_symbiosis()` and visuals update when `is_thriving` changes.
+    - `scripts/ui/ui.gd` — UI manager: emits `plant_selected`, shows WinScreen on `GameManager.game_won` and optional tooltips.
+    - `scripts/main/main.gd` — Controller: listens to UI and Grid, handles placement (Act), calls GameManager to register and resolve (Resolve).
+
+## Development Setup (local)
+1. Install Godot (version 4.x recommended).
+2. Open the project directory in Godot (`project.godot` exists at repo root).
+3. Ensure `GameManager` is registered as an AutoLoad (Project Settings -> Autoload) with path `scripts/autoloads/game_manager.gd` and name `GameManager`.
+
+## How to Run
+1. Open the project in Godot Editor.
+2. Press Play (the main scene should be set to `scenes/main/main.tscn` in Project Settings).
+
+## Developer Notes & Conventions
+- GDScript style follows Godot 4, using typed variables and `@export` where helpful.
+- Scripts aim to separate responsibilities: UI (input/presentation), Grid (visual), GameManager (logic/Resolve), Plant (data/behavior).
+
+## Testing & Verification
+- After placing plants, call `GameManager.update_entire_grid_state()` to run the Resolve phase.
+- `GameManager.grid_updated` is emitted after updates; `GameManager.game_won` is emitted when win condition is met.
+
+## Roadmap / Future Features
+- Weather system (rain, sun) affecting resource availability.
+- Day/night cycle that modifies resource production/consumption.
+- Multiple garden maps / levels with pre-placed plants or obstacles.
+- Achievements and save/load functionality.
+
+## Contributing
+- Fork the repo, create a branch, and open a PR. Include small, focused changes.
+- Keep changes backwards compatible when possible. Add tests or a demo scene for new mechanics.
+
+## Version History
+- v0.1 — Initial project setup and core mechanics scaffolding (grid, plants, GameManager).
+
+## Contact / Credits
+- Author: MatheusArCarvalho
+- Repository: (local workspace)
+
+---
+If you'd like, I can:
+- add a short README.md at the project root summarizing how to launch the game,
+- extract a smaller "developer quickstart" and place it in `documetation/DEV_SETUP.md`, or
+- generate a visual diagram (text-based) of scene and node relationships.
+Tell me which follow-up you'd prefer.
