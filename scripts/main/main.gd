@@ -5,7 +5,7 @@ extends Node2D
 @onready var grid = $Grid
 
 # Plant scene cache to avoid repeated loading
-var plant_scenes: Dictionary = {}
+@export var plant_scenes: Dictionary[String, PackedScene] = {}
 var current_selected_plant_type: String = ""
 
 func _ready() -> void:
@@ -15,22 +15,11 @@ func _ready() -> void:
 	
 	if not grid.tile_clicked.connect(_on_tile_clicked):
 		push_error("Failed to connect Grid tile_clicked signal")
-	
-	# Preload plant scenes
-	_preload_plant_scenes()
 
-func _preload_plant_scenes() -> void:
-	var plant_types = ["aqua_pod", "sun_petal"]
-	for plant_type in plant_types:
-		var scene_path = "res://scenes/plants/%s.tscn" % plant_type
-		var scene = load(scene_path)
-		if scene:
-			plant_scenes[plant_type] = scene
-		else:
-			push_error("Failed to load plant scene: " + scene_path)
 
 func _on_plant_selected(plant_type: String) -> void:
 	current_selected_plant_type = plant_type
+
 
 func _on_tile_clicked(grid_coords: Vector2i) -> void:
 	# No plant type selected

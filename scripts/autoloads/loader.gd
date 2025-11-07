@@ -1,8 +1,8 @@
 extends Node
 
 signal loading_progress_updated(percentage:float)
-
-var LOADING_SCREEN
+signal scene_loaded(scene:PackedScene)
+#var LOADING_SCREEN
 var loading_screen_instance:Node
 var scene_path_to_load:String
 var is_loading:bool
@@ -13,7 +13,7 @@ func load_scene(caller:Node, path:String) -> void:
 		return
 	scene_path_to_load = path
 	is_loading = true
-	loading_screen_instance = LOADING_SCREEN.instantiate()
+	#loading_screen_instance = LOADING_SCREEN.instantiate()
 	get_tree().root.add_child(loading_screen_instance)
 	ResourceLoader.load_threaded_request(scene_path_to_load)
 	caller.queue_free()
@@ -35,8 +35,8 @@ func _process(_delta: float) -> void:
 			var loaded_scene:PackedScene = ResourceLoader.load_threaded_get(scene_path_to_load)
 			
 			loading_screen_instance.queue_free()
-			get_tree().root.add_child(loaded_scene.instantiate())
-			
+			#get_tree().root.add_child(loaded_scene.instantiate())
+			scene_loaded.emit(loaded_scene)
 			
 			scene_path_to_load = ""
 
