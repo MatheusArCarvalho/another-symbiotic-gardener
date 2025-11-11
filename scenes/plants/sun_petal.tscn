@@ -9,5 +9,5 @@ plant_name = "Sun Petal"
 provides = Array[String](["sunlight"])
 needs = Array[String](["water"])
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="Visuals" index="0"]
 texture = ExtResource("2_vmqvh")

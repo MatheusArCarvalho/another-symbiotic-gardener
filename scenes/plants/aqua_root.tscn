@@ -1,5 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3vqy8m2dwfj1"]
+[gd_scene load_steps=3 format=3 uid="uid://c3vqy8m2dwfj1"]
 
 [ext_resource type="PackedScene" uid="uid://rhgsqkwjyey8" path="res://scenes/plants/plant.tscn" id="1_ov6mh"]
+[ext_resource type="Texture2D" uid="uid://dflr0qwx2uusw" path="res://assets/plants/1 Icons/Icon34_32.png" id="2_qfgl0"]
 
 [node name="AquaRoot" instance=ExtResource("1_ov6mh")]
+plant_id = "aqua_root"
+plant_name = "Aqua Root"
+provides = Array[String](["water", "nutrients"])
+needs = Array[String](["sunlight"])
+
+[node name="Sprite2D" parent="Visuals" index="0"]
+texture = ExtResource("2_qfgl0")
