@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8yxqv4mn7rqn"]
+[gd_scene load_steps=5 format=3 uid="uid://c8yxqv4mn7rqn"]
 
 [ext_resource type="Script" uid="uid://byoen5jn4asxj" path="res://scripts/grid/tiles/tile.gd" id="1_tile_script"]
+[ext_resource type="Texture2D" uid="uid://cji3v6vno33i7" path="res://assets/ui/ui.png" id="2_n6knl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kap3t"]
-bg_color = Color(0.4, 0.6, 0.29803923, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.2, 0.29803923, 0.14901961, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6knl"]
+texture = ExtResource("2_n6knl")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(52, 4, 8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tile"]
-size = Vector2(32, 32)
 
 [node name="Tile" type="Area2D"]
 script = ExtResource("1_tile_script")
@@ -22,13 +22,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kap3t")
+theme_override_styles/panel = SubResource("StyleBoxTexture_n6knl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_n6knl")
+region_enabled = true
+region_rect = Rect2(52, 4, 8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tile")
+
+[node name="Marker2D" type="Marker2D" parent="."]

@@ -6,4 +6,4 @@
 [node name="Grid" type="Node2D"]
 script = ExtResource("1_x0e5n")
 tile_scene = ExtResource("2_yuyu4")
-tile_size = 32
+tile_size = 20

@@ -3,6 +3,7 @@ extends Node2D
 # Reference to other nodes
 @onready var ui = $UI
 @onready var grid = $Grid
+@onready var plants_container = $PlantsContainer
 
 # Plant scene cache to avoid repeated loading
 @export var plant_scenes: Dictionary[String, PackedScene] = {}
@@ -45,7 +46,7 @@ func _on_tile_clicked(grid_coords: Vector2i) -> void:
 		return
 	
 	# Add plant both visually and logically
-	grid.add_plant_to_tile(plant_instance, grid_coords)
+	grid.add_plant_to_tile(plant_instance, grid_coords, plants_container)
 	GameManager.register_plant(plant_instance, grid_coords)
 	
 	# Trigger resolve step

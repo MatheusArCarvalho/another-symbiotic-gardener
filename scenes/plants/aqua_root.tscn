@@ -1,23 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3vqy8m2dwfj1"]
+[gd_scene load_steps=2 format=3 uid="uid://c3vqy8m2dwfj1"]
 
-[ext_resource type="Script" uid="uid://bmfqi37r3o347" path="res://scripts/plant/plant.gd" id="1_aqua"]
-[ext_resource type="Texture2D" uid="uid://dpkwmlnhcxvyg" path="res://assets/plants/1 Icons/Icon34_01.png" id="2_aqua"]
+[ext_resource type="PackedScene" uid="uid://rhgsqkwjyey8" path="res://scenes/plants/plant.tscn" id="1_ov6mh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_aqua"]
-radius = 16.0
-
-[node name="AquaRoot" type="Node2D"]
-script = ExtResource("1_aqua")
-plant_id = "aqua_root"
-plant_name = "Aqua Root"
-provides = Array[String](["water", "nutrients"])
-needs = Array[String](["sunlight"])
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.4, 0.6, 0.9, 1)
-texture = ExtResource("2_aqua")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_aqua")
+[node name="AquaRoot" instance=ExtResource("1_ov6mh")]

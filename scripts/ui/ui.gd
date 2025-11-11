@@ -2,12 +2,12 @@ extends CanvasLayer
 
 signal plant_selected(plant_type_id: String)
 
-@onready var win_screen = $WinScreen
-@onready var restart_button = $WinScreen/MarginContainer/VBoxContainer/RestartButton
-@onready var error_message = $ErrorMessage
-@onready var tooltip_panel:PanelContainer = $TooltipPanel
-@onready var tooltip_label:Label = $TooltipPanel/Label
-@onready var plant_buttons_container = $MarginContainer/PlantButtonsContainer
+@onready var win_screen = %WinScreen
+@onready var restart_button = %WinScreen/MarginContainer/VBoxContainer/RestartButton
+@onready var error_message = %ErrorMessage
+@onready var tooltip_panel:PanelContainer = %TooltipPanel
+@onready var tooltip_label:Label = %TooltipPanel/Label
+@onready var plant_buttons_container = %PlantButtonsContainer
 
 func _ready():
 	# Hide win screen initially

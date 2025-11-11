@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyik7821ymlbr"]
+[gd_scene load_steps=3 format=3 uid="uid://cyik7821ymlbr"]
 
+[ext_resource type="Theme" uid="uid://cif130y76a5av" path="res://resources/main_theme.tres" id="1_5fejo"]
 [ext_resource type="Script" uid="uid://22qgt8o1cuf1" path="res://scenes/ui/tooltip_panel.gd" id="1_p03s3"]
 
 [node name="TooltipPanel" type="PanelContainer"]
@@ -17,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("1_5fejo")
 script = ExtResource("1_p03s3")
 
 [node name="Label" type="Label" parent="."]

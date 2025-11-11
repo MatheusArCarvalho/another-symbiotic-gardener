@@ -6,7 +6,7 @@ class_name Plant
 @export var provides: Array[String] = []
 @export var needs: Array[String] = []
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var visuals: Node2D = $Visuals
 
 var is_thriving: bool = false:
 	set = _set_thriving_visuals,
@@ -32,15 +32,15 @@ func update_symbiosis(neighbor_plants: Array[Plant]) -> void:
 func _set_thriving_visuals(new_value: bool) -> void:
 	is_thriving = new_value
 	
-	if not sprite:
+	if not visuals:
 		return
 	
 	if is_thriving:
-		sprite.modulate = Color(1, 1, 1, 1)  # Normal color
-		sprite.scale = Vector2(1.1, 1.1)     # Slightly larger
+		visuals.modulate = Color(1, 1, 1, 1)  # Normal color
+		visuals.scale = Vector2(1.1, 1.1)     # Slightly larger
 	else:
-		sprite.modulate = Color(0.7, 0.7, 0.7, 1)  # Darker/desaturated
-		sprite.scale = Vector2(1.0, 1.0)           # Normal size
+		visuals.modulate = Color(0.7, 0.7, 0.7, 1)  # Darker/desaturated
+		visuals.scale = Vector2(1.0, 1.0)           # Normal size
 	
 	# Optional: You could add animation here
 	# var tween = create_tween()

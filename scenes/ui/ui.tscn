@@ -1,118 +1,103 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1t73t464sqhs"]
+[gd_scene load_steps=5 format=3 uid="uid://d1t73t464sqhs"]
 
 [ext_resource type="Script" uid="uid://ckajs5bgxsjc3" path="res://scripts/ui/ui.gd" id="1_u7n8c"]
 [ext_resource type="PackedScene" uid="uid://dc37fmbtjd0nr" path="res://scenes/ui/plant_button.tscn" id="2_aac20"]
 [ext_resource type="PackedScene" uid="uid://cyik7821ymlbr" path="res://scenes/ui/tooltip_panel.tscn" id="2_f5cxw"]
+[ext_resource type="Theme" uid="uid://cif130y76a5av" path="res://resources/main_theme.tres" id="3_g5kmx"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_u7n8c")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MainUI" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_g5kmx")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI"]
+layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="PlantButtonsContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TooltipLabel" type="Label" parent="MainUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("3_g5kmx")
+text = "Tooltip text here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlantButtonsContainer" type="HBoxContainer" parent="MainUI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
 
-[node name="AquaRoot" parent="MarginContainer/PlantButtonsContainer" instance=ExtResource("2_aac20")]
+[node name="AquaRoot" parent="MainUI/MarginContainer/VBoxContainer/PlantButtonsContainer" instance=ExtResource("2_aac20")]
 layout_mode = 2
-text = "Aqua Root"
 plant_id = "aqua_root"
 
-[node name="AeroRoot" parent="MarginContainer/PlantButtonsContainer" instance=ExtResource("2_aac20")]
+[node name="AeroRoot" parent="MainUI/MarginContainer/VBoxContainer/PlantButtonsContainer" instance=ExtResource("2_aac20")]
 layout_mode = 2
-text = "Aero Root"
 plant_id = "aero_root"
 
-[node name="TerraRoot" parent="MarginContainer/PlantButtonsContainer" instance=ExtResource("2_aac20")]
+[node name="TerraRoot" parent="MainUI/MarginContainer/VBoxContainer/PlantButtonsContainer" instance=ExtResource("2_aac20")]
 layout_mode = 2
-text = "Terra Root"
 plant_id = "terra_root"
 
-[node name="TerraRoot2" parent="MarginContainer/PlantButtonsContainer" instance=ExtResource("2_aac20")]
+[node name="SunPetal" parent="MainUI/MarginContainer/VBoxContainer/PlantButtonsContainer" instance=ExtResource("2_aac20")]
 layout_mode = 2
-text = "Sun Petal"
 plant_id = "sun_petal"
 
-[node name="WinScreen" type="PanelContainer" parent="."]
+[node name="WinScreen" type="PanelContainer" parent="MainUI"]
+unique_name_in_owner = true
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -75.0
-offset_right = 150.0
-offset_bottom = 75.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_g5kmx")
 
-[node name="MarginContainer" type="MarginContainer" parent="WinScreen"]
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/WinScreen"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/WinScreen/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="WinScreen/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MainUI/WinScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 text = "🌱 All Plants Thriving! 🌱"
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="WinScreen/MarginContainer/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="MainUI/WinScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Restart"
 
-[node name="TooltipLabel" type="Label" parent="."]
+[node name="ErrorMessage" type="Label" parent="MainUI"]
+unique_name_in_owner = true
 visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -80.0
-offset_right = 150.0
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Tooltip text here"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ErrorMessage" type="Label" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -20.0
-offset_right = 150.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 20
 text = "Tile Occupied!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TooltipPanel" parent="." instance=ExtResource("2_f5cxw")]
+[node name="TooltipPanel" parent="MainUI" instance=ExtResource("2_f5cxw")]
+unique_name_in_owner = true
 visible = false
+layout_mode = 2

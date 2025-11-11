@@ -21,3 +21,5 @@ plant_scenes = Dictionary[String, PackedScene]({
 position = Vector2(144, 24)
 
 [node name="UI" parent="." instance=ExtResource("3_l3cfh")]
+
+[node name="PlantsContainer" type="Node2D" parent="." groups=["plants_container"]]
