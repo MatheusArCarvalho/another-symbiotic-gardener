@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=2 format=3 uid="uid://sjj016jrkf5p"]
+
+[ext_resource type="Script" uid="uid://b4xnrrv3cwnio" path="res://resources/plants_data/plant_data.gd" id="1_aqua"]
+
+[resource]
+script = ExtResource("1_aqua")
+plant_id = "aqua_root"
+plant_name = "Aqua Root"
+provides = Array[int]([0])
+needs = Array[int]([1])

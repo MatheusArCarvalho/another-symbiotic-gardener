@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxh4nan3pwfk2"]
+[gd_scene load_steps=4 format=3 uid="uid://dxh4nan3pwfk2"]
 
 [ext_resource type="PackedScene" uid="uid://rhgsqkwjyey8" path="res://scenes/plants/plant.tscn" id="1_s2w0w"]
-[ext_resource type="Texture2D" uid="uid://clawagiumr78g" path="res://assets/plants/1 Icons/Icon34_15.png" id="2_terra"]
+[ext_resource type="Resource" uid="uid://c7xmbqk6vfx5j" path="res://resources/plants_data/terra_root_data.tres" id="2_terra_data"]
+[ext_resource type="Texture2D" uid="uid://bskli6s6d37dd" path="res://assets/plants/1 Icons/Icon34_28.png" id="3_terra"]
 
 [node name="TerraRoot" instance=ExtResource("1_s2w0w")]
-plant_id = "terra_root"
-plant_name = "Terra Root"
-provides = Array[String](["nutrients", "shade"])
+plant_data = ExtResource("2_terra_data")
+
+[node name="Sprite2D" parent="Visuals" index="0"]
+modulate = Color(0.6, 0.4, 0.2, 1)
+texture = ExtResource("3_terra")"nutrients", "shade"])
 needs = Array[String](["water"])
 
 [node name="Sprite2D" parent="Visuals" index="0"]

@@ -1,4 +1,5 @@
 @tool
+class_name Grid
 extends Node2D
 
 signal tile_clicked(grid_coords: Vector2i)

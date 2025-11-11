@@ -1,16 +1,14 @@
 extends Node2D
 class_name Plant
 
-@export var plant_id: String
-@export var plant_name: String
-@export var provides: Array[String] = []
-@export var needs: Array[String] = []
+@export var plant_data: PlantData
 
 @onready var visuals: Node2D = $Visuals
 
 var is_thriving: bool = false:
 	set = _set_thriving_visuals,
 	get = _get_thriving
+
 
 func _ready():
 	# Initialize visual state
@@ -20,14 +18,14 @@ func update_symbiosis(neighbor_plants: Array[Plant]) -> void:
 	var met_needs = []
 	
 	# Check each need against all neighbor plants
-	for need in needs:
+	for need:PlantData.PLANT_RESOURCE_TYPES in plant_data.needs:
 		for neighbor in neighbor_plants:
 			if neighbor.provides.has(need):
 				met_needs.append(need)
 				break
 	
 	# Plant is thriving if all needs are met
-	is_thriving = met_needs.size() == needs.size()
+	is_thriving = met_needs.size() == plant_data.needs.size()
 
 func _set_thriving_visuals(new_value: bool) -> void:
 	is_thriving = new_value

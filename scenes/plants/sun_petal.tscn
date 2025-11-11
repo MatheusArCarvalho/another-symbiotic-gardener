@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0qg54v224ubn"]
+[gd_scene load_steps=4 format=3 uid="uid://c0qg54v224ubn"]
 
 [ext_resource type="PackedScene" uid="uid://rhgsqkwjyey8" path="res://scenes/plants/plant.tscn" id="1_jdf5f"]
-[ext_resource type="Texture2D" uid="uid://bskli6s6d37dd" path="res://assets/plants/1 Icons/Icon34_28.png" id="2_vmqvh"]
+[ext_resource type="Resource" uid="uid://d25blh4b80ugu" path="res://resources/plants_data/sun_petal_data.tres" id="2_sun_data"]
+[ext_resource type="Texture2D" uid="uid://bskli6s6d37dd" path="res://assets/plants/1 Icons/Icon34_28.png" id="3_sun"]
 
 [node name="SunPetal" instance=ExtResource("1_jdf5f")]
-plant_id = "sun_petal"
-plant_name = "Sun Petal"
-provides = Array[String](["sunlight"])
-needs = Array[String](["water"])
+plant_data = ExtResource("2_sun_data")
 
 [node name="Sprite2D" parent="Visuals" index="0"]
-texture = ExtResource("2_vmqvh")
+texture = ExtResource("3_sun")

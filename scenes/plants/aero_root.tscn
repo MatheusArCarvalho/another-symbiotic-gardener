@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp7k2m8q5nwfh"]
+[gd_scene load_steps=4 format=3 uid="uid://bp7k2m8q5nwfh"]
 
 [ext_resource type="PackedScene" uid="uid://rhgsqkwjyey8" path="res://scenes/plants/plant.tscn" id="1_2t8yq"]
 [ext_resource type="Texture2D" uid="uid://b037r4wlthavy" path="res://assets/plants/1 Icons/Icon34_25.png" id="2_aero"]
+[ext_resource type="Resource" path="res://resources/plants_data/aero_root_data.tres" id="2_aero_data"]
 
 [node name="AeroRoot" instance=ExtResource("1_2t8yq")]
-plant_id = "aero_root"
-plant_name = "Aero Root"
-provides = Array[String](["sunlight", "shade"])
-needs = Array[String](["nutrients", "water"])
+plant_data = ExtResource("2_aero_data")
 
 [node name="Sprite2D" parent="Visuals" index="0"]
 modulate = Color(1, 1, 0.4, 1)
