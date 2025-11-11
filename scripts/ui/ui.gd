@@ -4,6 +4,7 @@ signal plant_selected(plant_type_id: String)
 
 @onready var win_screen = $WinScreen
 @onready var tooltip_panel:PanelContainer = $TooltipPanel
+@onready var tooltip_label:Label = $TooltipPanel/Label
 @onready var plant_buttons_container = $MarginContainer/PlantButtonsContainer
 
 func _ready():
@@ -33,7 +34,10 @@ func _on_game_won():
 func _setup_tooltips():
 	var tooltip_data = {
 		"aqua_pod": "A water-loving plant that thrives in moist environments",
-		"sun_petal": "A hardy plant that gives sunlight and excels in mineral-rich soil"
+		"sun_petal": "A hardy plant that gives sunlight and excels in mineral-rich soil",
+		"aqua_root": "A root plant that absorbs water efficiently",
+		"terra_root": "A root plant that draws minerals from the soil",
+		"aero_root": "A root plant that absorbs nutrients from the air"
 	}
 	
 	for plant_button:PlantButton in plant_buttons_container.get_children():
@@ -42,12 +46,20 @@ func _setup_tooltips():
 			plant_button.mouse_exited.connect(_on_plant_button_mouse_exited)
 
 func _on_plant_button_mouse_entered(tooltip_text: String):
+	if tooltip_label:
+		tooltip_label.text = tooltip_text
+		tooltip_label.show()
+
+
 	# Assuming you have a tooltip label node
 	if tooltip_panel:
 		#tooltip_panel.position = get_viewport().get_mouse_position() + Vector2(10, 10)
-		tooltip_panel.set_tooltip_label_text(tooltip_text)
+		tooltip_label.text = tooltip_text
 		tooltip_panel.show()
 
 func _on_plant_button_mouse_exited():
+	if tooltip_label:
+		tooltip_label.hide()
+
 	if tooltip_panel:
 		tooltip_panel.hide()
