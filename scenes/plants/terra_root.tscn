@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxh4nan3pwfk2"]
 
 [ext_resource type="Script" uid="uid://bmfqi37r3o347" path="res://scripts/plant/plant.gd" id="1_terra"]
-[ext_resource type="Texture2D" path="res://assets/plants/1 Icons/Icon34_15.png" id="2_terra"]
+[ext_resource type="Texture2D" uid="uid://clawagiumr78g" path="res://assets/plants/1 Icons/Icon34_15.png" id="2_terra"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_terra"]
 radius = 16.0
 
 [node name="TerraRoot" type="Node2D"]
 script = ExtResource("1_terra")
+plant_id = "terra_root"
 plant_name = "Terra Root"
 provides = Array[String](["nutrients", "shade"])
 needs = Array[String](["water"])

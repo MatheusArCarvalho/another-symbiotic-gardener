@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://barpbo7hrdlin"
-path="res://.godot/imported/Kenney Future Narrow.ttf-c27157dc3ae0ba1fa88b114d4736f5b6.fontdata"
+uid="uid://ctko7s546eles"
+path="res://.godot/imported/LilitaOne-Regular.ttf-fb7fd6a280cd6f49f18ee75eb7fe09c0.fontdata"
 
 [deps]
 
-source_file="res://assets/font/Kenney Future Narrow.ttf"
-dest_files=["res://.godot/imported/Kenney Future Narrow.ttf-c27157dc3ae0ba1fa88b114d4736f5b6.fontdata"]
+source_file="res://assets/font/LilitaOne-Regular.ttf"
+dest_files=["res://.godot/imported/LilitaOne-Regular.ttf-fb7fd6a280cd6f49f18ee75eb7fe09c0.fontdata"]
 
 [params]
 

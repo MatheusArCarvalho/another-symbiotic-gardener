@@ -10,10 +10,10 @@ var current_selected_plant_type: String = ""
 
 func _ready() -> void:
 	# Connect signals
-	if not ui.plant_selected.connect(_on_plant_selected):
+	if ui.plant_selected.connect(_on_plant_selected) != OK:
 		push_error("Failed to connect UI plant_selected signal")
 	
-	if not grid.tile_clicked.connect(_on_tile_clicked):
+	if grid.tile_clicked.connect(_on_tile_clicked) != OK:
 		push_error("Failed to connect Grid tile_clicked signal")
 
 
@@ -24,6 +24,7 @@ func _on_plant_selected(plant_type: String) -> void:
 func _on_tile_clicked(grid_coords: Vector2i) -> void:
 	# No plant type selected
 	if current_selected_plant_type.is_empty():
+		ui.show_error_message("Select a plant first!", 1.5)
 		return
 	
 	# Check if move is valid
@@ -51,7 +52,6 @@ func _on_tile_clicked(grid_coords: Vector2i) -> void:
 	GameManager.update_entire_grid_state()
 
 func _handle_invalid_placement(grid_coords: Vector2i) -> void:
-	# Optional: Add feedback for invalid placement
+	# Show visual feedback for invalid placement
+	ui.show_error_message("Tile Occupied!", 1.5)
 	print("Cannot place plant at ", grid_coords, " - tile is occupied")
-	# You could emit a signal here for UI feedback
-	# invalid_placement.emit(grid_coords)

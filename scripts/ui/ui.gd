@@ -3,6 +3,8 @@ extends CanvasLayer
 signal plant_selected(plant_type_id: String)
 
 @onready var win_screen = $WinScreen
+@onready var restart_button = $WinScreen/MarginContainer/VBoxContainer/RestartButton
+@onready var error_message = $ErrorMessage
 @onready var tooltip_panel:PanelContainer = $TooltipPanel
 @onready var tooltip_label:Label = $TooltipPanel/Label
 @onready var plant_buttons_container = $MarginContainer/PlantButtonsContainer
@@ -11,6 +13,10 @@ func _ready():
 	# Hide win screen initially
 	if win_screen:
 		win_screen.hide()
+	
+	# Connect restart button
+	if restart_button:
+		restart_button.pressed.connect(_on_restart_button_pressed)
 	
 	# Connect plant buttons
 	for plant_button:PlantButton in plant_buttons_container.get_children():
@@ -29,6 +35,24 @@ func _on_plant_button_pressed(plant_id: String):
 func _on_game_won():
 	if win_screen:
 		win_screen.show()
+
+func _on_restart_button_pressed() -> void:
+	GameManager.reset_game()
+	get_tree().reload_current_scene()
+
+func show_error_message(message: String, duration: float = 1.5):
+	if error_message:
+		error_message.text = message
+		error_message.show()
+		
+		# Create a tween to fade out and hide the message
+		var tween = create_tween()
+		tween.tween_interval(duration)
+		tween.tween_property(error_message, "modulate:a", 0.0, 0.3)
+		tween.tween_callback(func(): 
+			error_message.hide()
+			error_message.modulate.a = 1.0
+		)
 
 # Optional tooltip management
 func _setup_tooltips():

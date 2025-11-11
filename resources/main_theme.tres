@@ -1,52 +1,42 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cif130y76a5av"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cif130y76a5av"]
 
 [ext_resource type="Texture2D" uid="uid://ccddxxh6ec3qv" path="res://assets/ui/Grey/Double/bar_square_large_square.png" id="1_biaja"]
-[ext_resource type="FontFile" uid="uid://barpbo7hrdlin" path="res://assets/font/Kenney Future Narrow.ttf" id="2_biaja"]
+[ext_resource type="FontFile" uid="uid://ctko7s546eles" path="res://assets/font/LilitaOne-Regular.ttf" id="2_biaja"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_biaja"]
 load_path = "res://.godot/imported/bar_square_large_square.png-28f1329f3ade94b38e6fea8f7bcccc4c.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vnc4k"]
 texture = SubResource("CompressedTexture2D_biaja")
-texture_margin_left = 8.0
-texture_margin_top = 8.0
-texture_margin_right = 8.0
-texture_margin_bottom = 8.0
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 modulate_color = Color(0.16078432, 0.21176471, 0.43529412, 1)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x127s"]
-load_path = "res://.godot/imported/bar_square_large_square.png-28f1329f3ade94b38e6fea8f7bcccc4c.ctex"
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hofdy"]
-texture = SubResource("CompressedTexture2D_x127s")
-texture_margin_left = 8.0
-texture_margin_top = 8.0
-texture_margin_right = 8.0
-texture_margin_bottom = 8.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u427p"]
+texture = ExtResource("1_biaja")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(0, 0, 48, 48)
 modulate_color = Color(0.21960784, 0.7176471, 0.39215687, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qjhx0"]
 texture = ExtResource("1_biaja")
-texture_margin_left = 8.0
-texture_margin_top = 8.0
-texture_margin_right = 8.0
-texture_margin_bottom = 8.0
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 modulate_color = Color(0.654902, 0.9411765, 0.4392157, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u427p"]
-texture = ExtResource("1_biaja")
-texture_margin_left = 8.0
-texture_margin_top = 8.0
-texture_margin_right = 8.0
-texture_margin_bottom = 8.0
-modulate_color = Color(0.21960784, 0.7176471, 0.39215687, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7rtxy"]
 texture = ExtResource("1_biaja")
-texture_margin_left = 8.0
-texture_margin_top = 8.0
-texture_margin_right = 8.0
-texture_margin_bottom = 8.0
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 modulate_color = Color(0.14509805, 0.44313726, 0.4745098, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ols5k"]
@@ -58,8 +48,9 @@ border_width_bottom = 4
 
 [resource]
 default_font = ExtResource("2_biaja")
+Button/constants/outline_size = 8
 Button/styles/disabled = SubResource("StyleBoxTexture_vnc4k")
-Button/styles/focus = SubResource("StyleBoxTexture_hofdy")
+Button/styles/focus = SubResource("StyleBoxTexture_u427p")
 Button/styles/hover = SubResource("StyleBoxTexture_qjhx0")
 Button/styles/normal = SubResource("StyleBoxTexture_u427p")
 Button/styles/pressed = SubResource("StyleBoxTexture_7rtxy")

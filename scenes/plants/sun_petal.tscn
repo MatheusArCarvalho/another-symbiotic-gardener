@@ -4,9 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bskli6s6d37dd" path="res://assets/plants/1 Icons/Icon34_28.png" id="2_vmqvh"]
 
 [node name="SunPetal" instance=ExtResource("1_jdf5f")]
-plant_name = "sun-petal"
+plant_id = "sun_petal"
+plant_name = "Sun Petal"
 provides = Array[String](["sunlight"])
 needs = Array[String](["water"])
 
 [node name="Sprite2D" parent="." index="0"]
+visible = false
 texture = ExtResource("2_vmqvh")

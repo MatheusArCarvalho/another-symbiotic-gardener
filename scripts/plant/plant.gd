@@ -1,6 +1,7 @@
 extends Node2D
 class_name Plant
 
+@export var plant_id: String
 @export var plant_name: String
 @export var provides: Array[String] = []
 @export var needs: Array[String] = []

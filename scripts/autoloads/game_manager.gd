@@ -17,6 +17,9 @@ const NEIGHBOR_DIRECTIONS: Array[Vector2i] = [
 	Vector2i(-1, 1),  Vector2i(0, 1),  Vector2i(1, 1)
 ]
 
+func reset_game() -> void:
+	plant_grid.clear()
+
 func is_tile_empty(grid_coords: Vector2i) -> bool:
 	return not plant_grid.has(grid_coords)
 

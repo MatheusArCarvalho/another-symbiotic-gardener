@@ -1,11 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://huo3gh6bvy2l"]
+[gd_scene load_steps=8 format=3 uid="uid://huo3gh6bvy2l"]
 
 [ext_resource type="Script" uid="uid://b8mie81wgjikd" path="res://scripts/main/main.gd" id="1_hyk8p"]
 [ext_resource type="PackedScene" uid="uid://bqjr62grxrr53" path="res://scenes/grid/grid.tscn" id="2_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://c3vqy8m2dwfj1" path="res://scenes/plants/aqua_root.tscn" id="2_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://bp7k2m8q5nwfh" path="res://scenes/plants/aero_root.tscn" id="3_hujxm"]
 [ext_resource type="PackedScene" uid="uid://d1t73t464sqhs" path="res://scenes/ui/ui.tscn" id="3_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://dxh4nan3pwfk2" path="res://scenes/plants/terra_root.tscn" id="4_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://c0qg54v224ubn" path="res://scenes/plants/sun_petal.tscn" id="5_hujxm"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hyk8p")
+plant_scenes = Dictionary[String, PackedScene]({
+"aero_root": ExtResource("3_hujxm"),
+"aqua_root": ExtResource("2_ow5a4"),
+"sun_petal": ExtResource("5_hujxm"),
+"terra_root": ExtResource("4_yyfjg")
+})
 
 [node name="Grid" parent="." instance=ExtResource("2_k2fmo")]
 position = Vector2(144, 24)
