@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp7k2m8q5nwfh"]
+
+[ext_resource type="Script" uid="uid://bmfqi37r3o347" path="res://scripts/plant/plant.gd" id="1_aero"]
+[ext_resource type="Texture2D" path="res://assets/plants/1 Icons/Icon34_25.png" id="2_aero"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aero"]
+radius = 16.0
+
+[node name="AeroRoot" type="Node2D"]
+script = ExtResource("1_aero")
+plant_name = "Aero Root"
+provides = Array[String](["sunlight", "shade"])
+needs = Array[String](["nutrients"])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.8, 0.9, 0.5, 1)
+texture = ExtResource("2_aero")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_aero")

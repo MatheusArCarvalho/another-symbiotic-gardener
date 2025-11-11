@@ -1,9 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqjr62grxrr53"]
 
 [ext_resource type="Script" uid="uid://b3wq2wc1b7tlw" path="res://scenes/grid/grid.gd" id="1_x0e5n"]
-[ext_resource type="PackedScene" uid="uid://bawsqcrrnlxlg" path="res://scenes/grid/tile/tile.tscn" id="2_yuyu4"]
+[ext_resource type="PackedScene" uid="uid://c8yxqv4mn7rqn" path="res://scenes/grid/tiles/tile.tscn" id="2_yuyu4"]
 
 [node name="Grid" type="Node2D"]
 script = ExtResource("1_x0e5n")
 tile_scene = ExtResource("2_yuyu4")
-tile_size = 32
+grid_width = 10
+grid_height = 10
+tile_size = 64

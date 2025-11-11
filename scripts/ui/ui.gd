@@ -33,7 +33,7 @@ func _on_game_won():
 func _setup_tooltips():
 	var tooltip_data = {
 		"aqua_pod": "A water-loving plant that thrives in moist environments",
-        "sun_petal": "A hardy plant that gives sunlight and excels in mineral-rich soil"
+		"sun_petal": "A hardy plant that gives sunlight and excels in mineral-rich soil"
 	}
 	
 	for plant_button:PlantButton in plant_buttons_container.get_children():
