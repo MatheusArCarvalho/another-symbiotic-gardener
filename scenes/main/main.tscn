@@ -18,7 +18,7 @@ plant_scenes = Dictionary[String, PackedScene]({
 })
 
 [node name="Grid" parent="." instance=ExtResource("2_k2fmo")]
-position = Vector2(144, 24)
+position = Vector2(117, 19)
 
 [node name="UI" parent="." instance=ExtResource("3_l3cfh")]
 

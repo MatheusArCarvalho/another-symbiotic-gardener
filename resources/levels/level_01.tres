@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bqj7cb1en1mlc"]
+
+[ext_resource type="Script" uid="uid://d38ih5k0ntvj4" path="res://resources/levels/level_data.gd" id="1_level1"]
+
+[resource]
+script = ExtResource("1_level1")
+level_id = 1
+level_name = "Tutorial: First Garden"
+level_description = "Place a Sun Petal next to the Aqua Root to make both plants thrive!"
+pre_placed_plants = {
+Vector2i(4, 4): "aqua_root"
+}
+available_plants = Array[String](["sun_petal"])
+max_player_plants = 1

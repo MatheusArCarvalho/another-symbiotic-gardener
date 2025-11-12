@@ -4,10 +4,14 @@ signal plant_selected(plant_type_id: String)
 
 @onready var win_screen = %WinScreen
 @onready var restart_button = %WinScreen/MarginContainer/VBoxContainer/RestartButton
+@onready var restart_level_button = %RestartLevelButton
 @onready var error_message = %ErrorMessage
 @onready var tooltip_panel:PanelContainer = %TooltipPanel
-@onready var tooltip_label:Label = %TooltipPanel/Label
+@onready var tooltip_label:Label = %TooltipLabel
 @onready var plant_buttons_container = %PlantButtonsContainer
+@onready var level_title:Label = %LevelTitle
+@onready var level_description:Label = %LevelDescription
+@onready var next_level_button = %WinScreen/MarginContainer/VBoxContainer/NextLevelButton
 
 func _ready():
 	# Hide win screen initially
@@ -17,6 +21,14 @@ func _ready():
 	# Connect restart button
 	if restart_button:
 		restart_button.pressed.connect(_on_restart_button_pressed)
+	
+	# Connect restart level button
+	if restart_level_button:
+		restart_level_button.pressed.connect(_on_restart_level_button_pressed)
+	
+	# Connect next level button
+	if next_level_button:
+		next_level_button.pressed.connect(_on_next_level_button_pressed)
 	
 	# Connect plant buttons
 	for plant_button:PlantButton in plant_buttons_container.get_children():
@@ -39,6 +51,28 @@ func _on_game_won():
 func _on_restart_button_pressed() -> void:
 	GameManager.reset_game()
 	get_tree().reload_current_scene()
+
+func _on_restart_level_button_pressed() -> void:
+	# Reload the current level without resetting progress
+	if GameManager.current_level:
+		GameManager.load_level(GameManager.current_level_index)
+
+func _on_next_level_button_pressed() -> void:
+	if win_screen:
+		win_screen.hide()
+	GameManager.next_level()
+
+func set_available_plants(available_plant_ids: Array[String]) -> void:
+	# Enable/disable plant buttons based on available plants
+	for plant_button:PlantButton in plant_buttons_container.get_children():
+		if plant_button:
+			plant_button.visible = plant_button.plant_id in available_plant_ids
+
+func show_level_info(title: String, description: String) -> void:
+	if level_title:
+		level_title.text = title
+	if level_description:
+		level_description.text = description
 
 func show_error_message(message: String, duration: float = 1.5):
 	if error_message:
@@ -76,14 +110,14 @@ func _on_plant_button_mouse_entered(tooltip_text: String):
 
 
 	# Assuming you have a tooltip label node
-	if tooltip_panel:
+	#if tooltip_panel:
 		#tooltip_panel.position = get_viewport().get_mouse_position() + Vector2(10, 10)
-		tooltip_label.text = tooltip_text
-		tooltip_panel.show()
+		#tooltip_label.text = tooltip_text
+		#tooltip_panel.show()
 
 func _on_plant_button_mouse_exited():
 	if tooltip_label:
 		tooltip_label.hide()
 
-	if tooltip_panel:
-		tooltip_panel.hide()
+	#if tooltip_panel:
+		#tooltip_panel.hide()

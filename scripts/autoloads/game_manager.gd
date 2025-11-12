@@ -2,6 +2,7 @@ extends Node
 
 signal grid_updated
 signal game_won
+signal level_loaded(level_data)
 
 # Grid boundaries
 const GRID_WIDTH: int = 10
@@ -9,6 +10,14 @@ const GRID_HEIGHT: int = 10
 
 # Stores plant instances by their grid coordinates
 var plant_grid: Dictionary = {}
+
+# Current level
+var current_level = null
+var current_level_index: int = 0
+var player_plants_placed: int = 0
+
+# Level progression
+@export var levels: Array = []
 
 # Direction vectors for neighbor checking (8-way neighbors)
 const NEIGHBOR_DIRECTIONS: Array[Vector2i] = [
@@ -19,6 +28,47 @@ const NEIGHBOR_DIRECTIONS: Array[Vector2i] = [
 
 func reset_game() -> void:
 	plant_grid.clear()
+	player_plants_placed = 0
+
+func load_level(level_index: int) -> void:
+	print("GameManager.load_level called with index: ", level_index)
+	print("Total levels available: ", levels.size())
+	
+	if level_index < 0 or level_index >= levels.size():
+		push_error("Invalid level index: ", level_index)
+		return
+	
+	current_level_index = level_index
+	current_level = levels[level_index]
+	player_plants_placed = 0
+	
+	print("Current level set to: ", current_level)
+	print("Emitting level_loaded signal...")
+	level_loaded.emit(current_level)
+
+func can_place_plant() -> bool:
+	if not current_level:
+		return true  # No level restrictions
+	
+	if current_level.max_player_plants < 0:
+		return true  # Unlimited
+	
+	return player_plants_placed < current_level.max_player_plants
+
+func on_player_plant_placed() -> void:
+	player_plants_placed += 1
+
+func get_available_plants() -> Array[String]:
+	if not current_level:
+		return []
+	return current_level.available_plants
+
+func next_level() -> void:
+	if current_level_index + 1 < levels.size():
+		load_level(current_level_index + 1)
+	else:
+		print("All levels completed!")
+
 
 func is_tile_empty(grid_coords: Vector2i) -> bool:
 	return not plant_grid.has(grid_coords)

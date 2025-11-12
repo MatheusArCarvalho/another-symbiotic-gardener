@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1t73t464sqhs"]
+[gd_scene load_steps=5 format=3 uid="uid://d1t73t464sqhs"]
 
 [ext_resource type="Script" uid="uid://ckajs5bgxsjc3" path="res://scripts/ui/ui.gd" id="1_u7n8c"]
 [ext_resource type="PackedScene" uid="uid://dc37fmbtjd0nr" path="res://scenes/ui/plant_button.tscn" id="2_aac20"]
 [ext_resource type="PackedScene" uid="uid://cyik7821ymlbr" path="res://scenes/ui/tooltip_panel.tscn" id="2_f5cxw"]
 [ext_resource type="Theme" uid="uid://cif130y76a5av" path="res://resources/main_theme.tres" id="3_g5kmx"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5kmx"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_u7n8c")
@@ -28,35 +26,6 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="MainUI/MarginContainer"]
 layout_mode = 2
 alignment = 2
-
-[node name="LevelInfo" type="VBoxContainer" parent="MainUI/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/MarginContainer/VBoxContainer/LevelInfo"]
-layout_mode = 2
-alignment = 1
-
-[node name="LevelTitle" type="Label" parent="MainUI/MarginContainer/VBoxContainer/LevelInfo/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Level 1"
-horizontal_alignment = 1
-
-[node name="RestartLevelButton" type="Button" parent="MainUI/MarginContainer/VBoxContainer/LevelInfo/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "↻"
-
-[node name="LevelDescription" type="Label" parent="MainUI/MarginContainer/VBoxContainer/LevelInfo"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Place plants to make them thrive!"
-horizontal_alignment = 1
 
 [node name="TooltipLabel" type="Label" parent="MainUI/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -98,7 +67,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("3_g5kmx")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_g5kmx")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainUI/WinScreen"]
 layout_mode = 2
@@ -120,11 +88,6 @@ horizontal_alignment = 1
 [node name="RestartButton" type="Button" parent="MainUI/WinScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Restart"
-
-[node name="NextLevelButton" type="Button" parent="MainUI/WinScreen/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Next Level"
 
 [node name="ErrorMessage" type="Label" parent="MainUI"]
 unique_name_in_owner = true

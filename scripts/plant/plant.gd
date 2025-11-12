@@ -20,7 +20,7 @@ func update_symbiosis(neighbor_plants: Array[Plant]) -> void:
 	# Check each need against all neighbor plants
 	for need:PlantData.PLANT_RESOURCE_TYPES in plant_data.needs:
 		for neighbor in neighbor_plants:
-			if neighbor.provides.has(need):
+			if neighbor.plant_data.provides.has(need):
 				met_needs.append(need)
 				break
 	

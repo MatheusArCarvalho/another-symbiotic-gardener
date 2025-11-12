@@ -15,22 +15,36 @@ var tiles: Dictionary = {}
 func _ready() -> void:
 	generate_grid()
 
+func clear_grid() -> void:
+	# Remove all existing tiles
+	for tile in tiles.values():
+		if is_instance_valid(tile):
+			tile.queue_free()
+	tiles.clear()
+
 func generate_grid() -> void:
+	# Clear existing grid first
+	clear_grid()
+	
 	for x in range(grid_width):
 		for y in range(grid_height):
 			var tile = tile_scene.instantiate()
 			var grid_coords = Vector2i(x, y)
 			
-			# Set position and grid coordinates
+			# Set position
 			tile.position = Vector2(x * tile_size, y * tile_size)
-			tile.grid_coords = grid_coords
 			add_child(tile)
+			
+			# Set grid coordinates after adding to tree
+			if tile.has_method("set") and "grid_coords" in tile:
+				tile.grid_coords = grid_coords
 			
 			# Store tile reference
 			tiles[grid_coords] = tile
 			
 			# Connect tile's clicked signal
-			tile.tile_clicked.connect(_on_tile_clicked)
+			if tile.has_signal("tile_clicked"):
+				tile.tile_clicked.connect(_on_tile_clicked)
 
 func _on_tile_clicked(grid_coords: Vector2i) -> void:
 	tile_clicked.emit(grid_coords)

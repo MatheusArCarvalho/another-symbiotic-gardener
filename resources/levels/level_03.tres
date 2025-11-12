@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://djm7layn4rvxu"]
+
+[ext_resource type="Script" uid="uid://d38ih5k0ntvj4" path="res://resources/levels/level_data.gd" id="1_level3"]
+
+[resource]
+script = ExtResource("1_level3")
+level_id = 3
+level_name = "Garden Circle"
+level_description = "Create a chain where all plants support each other!"
+pre_placed_plants = {
+Vector2i(4, 4): "aqua_root"
+}
+available_plants = Array[String](["terra_root", "aero_root", "sun_petal"])
+max_player_plants = 3
